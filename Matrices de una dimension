@@ -1,0 +1,49 @@
+#Matriz de una dimensión
+
+'Grupo de elementos de un mismo tipo con nombre común. Gran variable con muchos valores del mismo tipo
+
+'Extraer elementos concretos o todos
+'Se suele usar para almacenar valores de un rango
+
+DECLARACIÓN:
+ejemplo
+
+  dim mirango(4) as Integer
+
+'4 = 5 variables en el rango 0/1/2/3/4
+
+  mirango(0) = 5 'Pej. almacenar en posición "0" el valor "5"
+  mirango(1) = 7
+  mirango(2) = 4
+  mirango(3) = 9
+  mirango(4) = 12
+
+  mirango(5) = 6, esto da error de desbordamiento ya que el rango de la matriz está fuera del intervalo
+'ver que hay almacenado en la matriz
+'ver en msgbox
+  Msgbox mirango(3)
+
+Otra forma de declarar matrices:
+
+dim mimatriz(0 to 4) as Integer
+'esto hace lo mismo que la forma de declarar que hemos vuelto antes, esta última solo la permite VBA. 
+'A diferencia de la otra forma, puedes elegir desde que posicion empieza la matriz. ej. (1 to 4)
+
+'si antes de cualquier pocedimiento escribimos "Option Base 1" todas las matrices empiezan por defecto en "1" en vez de por "0"
+
+
+OTHER:
+
+debug.print mimatriz(3) 'esto muestra en la ventana de inmediato lo que hay almacenado en mimatriz(3)
+
+Range("d1").Select             'Seleccionar celda D1
+Selection.CurrentRegion.Select 'Seleccionar las celdas adyacentes a la celda D1
+Dim indice As Integer 'declarar una variable, necesario para el siguiente ejemplo
+
+For Each micelda In Selection 'Recorrer la selección celda a celda hasta que termine
+    mirango(indice) = micelda.Value
+    indice = indice +1
+Next micelda
+
+
+
