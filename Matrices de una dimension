@@ -45,5 +45,23 @@ For Each micelda In Selection 'Recorrer la selección celda a celda hasta que te
     indice = indice +1
 Next micelda
 
+MATRICES DE MAS DE UNA DIMENSION
 
+sub matrizrandom ()
+
+dim mimatrizmult (2,3) as integer
+  
+dim i as integer, z as integer
+
+
+For i = 0 to 2 step 1
+
+  For z = 0 to 2 step 1
+  
+    mimatrizmult (i,z) = Math.Round.(Math.Rnd * 1009
+    
+  Next z
+  
+Next i   
+  
 
