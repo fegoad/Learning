@@ -1,0 +1,97 @@
+Variables objeto
+
+Sub variablesobjeto()
+
+'Variables objeto, no son variables primitivas. Son por ejemplo, celdas, libros, etc.
+'simplifica el código. El codigo se ejecuta mas rapidamente desde objetos. Permite recorrer en busca de propiedades etc
+
+Dim micelda As Range
+
+'Cambiar propiedad de una celda
+
+'Worksheets(1).Range("b5").Value = 124
+'Worksheets(1).Range("b5").Font.Bold = True
+
+'Cada vez que VBA encuentra un punto (.) va mas lento de lo normal
+
+Set micelda = Worksheets(1).Range("b5") 'Mi celda es ahora igual al objeto. Por lo tanto te mostrará VBA las propiedades de este
+
+'micelda.Value = 124
+'micelda.Font.Bold = True
+'micelda.Font.Italic = True
+
+'With, instrucción útil cuando vamos a manipular varias propiedades del mismo objeto. Al mezclar con una variable de tipo
+'objeto, el código queda más limpio
+
+With micelda
+
+.Value = 124
+.Font.Bold = True
+.Font.Italic = True
+
+End With
+
+End Sub
+
+Sub variablesobjeto2()
+'
+'Dim micelda2 As Range
+'
+'For Each micelda In Selection 'por cada celad que haya en la selección...
+'
+'    MsgBox micelda.Value
+'
+'Next micelda
+'
+'Dim mihoja As Worksheet
+
+For Each mihoja In Worksheets  'Esto da un cuadro de texto con los nombres de cada hoja
+    
+    MsgBox mihoja.Name
+    
+Next mihoja
+
+    
+End Sub
+
+Sub mi_formato()
+
+Dim micelda As Range 'celdas dentro de un rango
+
+    For Each micelda In Selection
+    
+        If micelda.Value >= 300 Then
+            
+            micelda.Interior.Color = vbRed
+       
+        End If
+    
+Next micelda
+
+End Sub
+
+
+Sub localiza()
+
+'localizar y activar una hoja concreto
+
+Dim mihoja As Worksheet
+
+For Each mihoja In Worksheets 'recorrer todas las sheets en worksheets
+
+    If mihoja.Name = "Balance" Then
+    
+        mihoja.Select
+
+    End If
+    
+Next mihoja
+
+
+End Sub
+
+
+
+
+
+
