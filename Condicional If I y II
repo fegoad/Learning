@@ -1,0 +1,50 @@
+'Condicional if I
+
+'Estructuras de control de flujo en VBA Excel
+'    Condicionales
+'        If-then
+'        Select - case
+'
+'    Bucles - permite repetir una parte del codigo repetidas veces
+'       Determinados. Conocemos las veces que se ejecutará el código
+'           For-Next. Lo que hay en su interior se repita un numero determinado de veces
+'           For-each-next. Recorrer colecciones de objetos
+'       indeterminados. No conocemos las veces que se ejecutará el código
+'           Do-loop
+'           While -wend
+'           Do-until
+
+
+'instrucción GoTo. Estructura antigua que permite ir a un determinado lugar del código. No abusar de esta instrucción porque es un jaleo.
+'Captura de errores.
+
+Sub control_flujo1() 'Uso el If Then
+
+Dim edad As Integer
+
+On Error GoTo etiqueta 'Etiqueta es un marcador/ etiqueta en el código a la que podemos dirigirnos.
+
+edad = InputBox("Introduce tu edad", "")
+
+If edad < 18 Then
+
+    MsgBox "Eres menor de edad"
+
+End If
+
+If edad >= 18 Then
+
+    MsgBox "Eres mayor de edad"
+
+End If
+
+'Control de errores, por ejemplo, si al entrar el valor en el inputbox ponemos texto en vez de integers
+
+Exit Sub 'para salir en un punto determinado del procedimiento
+
+etiqueta: 'podemos ponerle otro nombre.
+
+MsgBox "No se qué edad tienes"
+
+
+End Sub
