@@ -1,0 +1,59 @@
+'Funciones predefinidas II
+
+Sub uso_inputbox()
+
+Dim var1 As Integer, var2 As Integer
+
+var1 = InputBox("Introduce el primer nº", "Valor 1", "Introduce el valor")
+
+var2 = InputBox("Introduce el primer nº", "Valor 2", "Introduce el valor")
+
+MsgBox "La suma de los números es " & var1 + var2
+
+
+End Sub
+
+Sub trabajo_hojas()
+'Código para elegir en que hoja queremos trabajar al abrir un libro excel.
+
+Dim n_hoja As String 'para introducir en el año que queremos trabajar
+
+n_hoja = InputBox("En qué año quieres trabajar?") 'almacenamos en n_hoja lo que el usuario introduce en el input box
+
+Worksheets(n_hoja).Visible = True 'hacer visible la hoja introducida. los parentesis admiten sólo texto. por eso hacemos el dim as string
+
+Worksheets(n_hoja).Select
+
+'evento: desencadenante de la acción. Es decir, cuando queremos que se ejecute un código.
+'Queremos un evento al abrir el libro para ejecutar el código
+'Hay que buscar el objeto libro y bajo su evento abrir, ejecute el codigo
+
+End Sub
+
+---------------------------------------------------
+'Aquí introducimos los eventos. En el apartado thiswordbook dentro de vba, Podemos crear eventos que se realicen en determinados
+'momentos. Esto se puede seleccionar en las dos pestañitas aque aparecen arriba en el cuadro para introducir código.
+
+Private Sub Workbook_BeforeClose(Cancel As Boolean)
+
+'que nos oculte la hoja que hemos abierto
+ActiveSheet.Visible = False
+
+'que excel nos guarde cambios sin preguntar
+ActiveWorkbook.Close (True)
+
+
+End Sub
+
+Private Sub Workbook_Open()
+
+Dim n_hoja As String 'para introducir en el año que queremos trabajar
+
+n_hoja = InputBox("En qué año quieres trabajar?") 'almacenamos en n_hoja lo que el usuario introduce en el input box
+
+Worksheets(n_hoja).Visible = True 'hacer visible la hoja introducida. los parentesis admiten sólo texto. por eso hacemos el dim as string
+
+Worksheets(n_hoja).Select
+
+End Sub
+
