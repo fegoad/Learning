@@ -1,0 +1,56 @@
+
+Sub funciones_integradas()
+
+'vba. listado con todas las funciones predefinidas. Admiten de varios/ uno o ningun argumento.
+'Como hay tantos, vba permite ayudas para saber que hace cada una. Solo hay que escribir la función, seleccionarla
+'y luego pulsar f1. Aparece una ventana con toda la info de la función predefindida
+
+'objetos whorksheetfunction y math. Contienen bastantes funciones para hacer procedimientos matematicos.
+
+'ejemplo, suma 3 + 7: MsgBox WorksheetFunction.Sum(3, 7)
+'o por otro lado: range("i10") worksheetfunction.sum(selection) . Suma de la selección que tengamos hecha y lo pega
+'en la celda i10
+
+'funcion imputbox coje info del exterior y la introduce en el programa. Es el contrario a la funcion msgbox. Es decir.
+'se crea una ventana emergente en la que el usuario introduce los parámetros
+
+'ejemplo que suma un rango de celdas y evalue si en ese rango hay valores númericos solo, o tambien de texgto.
+'y si hay de texto nos advierta de ello y si queremos continuar con la operación.
+
+Dim micelda As Range, z As Boolean, valor As Integer 'las boolean son false por defecto
+
+For Each micelda In Selection 'vba va a recorrer un rango
+
+    If WorksheetFunction.IsText(micelda) Then 'si es un texto lo que hay almacenado en la celda que estamos evaluando...
+    
+        z = True        '... cambie el valor false de la variable por true
+        
+    End If
+    
+Next micelda
+        
+    If z = True Then
+    
+        valor = MsgBox("Hay texto en el rango seleccionado." & vbCrLf & "Deseas continuar?", 4)
+        'vbcrlf lo que hace es, dentro de el msgbox va a insertar un salto de linea. un punto y a parte.Es para que quede
+        'mejor el texto en el box
+        'el 4 crea casillas "si" y "no". pero devuelve un valor. hay que declarar el valor que retornara el msgbox
+    
+        If valor = vbYes Then
+            
+            MsgBox WorksheetFunction.Sum(Selection)
+            
+        Else
+            MsgBox "No se realizará la suma"
+    
+        End If
+        
+    Else 'si no hay valores texto q realize la suma
+       
+        MsgBox WorksheetFunction.Sum(Selection)
+        
+        
+    End If
+    
+End Sub
+
