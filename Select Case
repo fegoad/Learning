@@ -1,0 +1,30 @@
+'SELECT CASE
+
+'Util para evaluar una horquilla de valores. Alternativa a if cuando hay muchas horquillas de valores
+'Mismo programa que antes en el capitulo if
+
+Sub calculocomision2()
+
+Dim micelda As Range
+
+For Each micelda In Selection
+
+    Select Case micelda.Offset(0, 1)
+    
+        Case 500 To 1000
+        
+            micelda.Offset(0, 2).Value = micelda.Offset(0, 1).Value * 1.02 + micelda.Value
+            
+        Case 1001 To 2000
+        
+            micelda.Offset(0, 2).Value = micelda.Offset(0, 1).Value * 1.04 + micelda.Value
+           
+        Case Else 'es opcional. dice: "y si no fuera ninguna de las dos anteriores, haces este calculo"
+        
+            micelda.Offset(0, 2).Value = micelda.Offset(0, 1).Value * 1.07 + micelda.Value
+            
+        End Select
+     
+Next micelda
+
+End Sub
