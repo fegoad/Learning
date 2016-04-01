@@ -32,6 +32,39 @@ If edad < 18 Then
 
 End If
 
+
+---------------------------------- PARTE CONDICIONAL II -----------------------------------------------------
+
+Sub calculocomision()
+
+Dim micelda As Range
+
+'For --------> sirve para recorrer colecciones
+
+For Each micelda In Selection
+
+    If micelda.Offset(0, 1).Value > 500 And micelda.Offset(0, 1).Value < 1000 Then
+    
+        micelda.Offset(0, 2).Value = micelda.Offset(0, 1).Value * 1.02 + micelda.Value
+        
+    ElseIf micelda.Offset(0, 1).Value >= 1000 And micelda.Offset(0, 1).Value <= 2000 Then
+    
+        micelda.Offset(0, 2).Value = micelda.Offset(0, 1).Value * 1.04 + micelda.Value
+    
+    Else
+    
+        micelda.Offset(0, 2).Value = micelda.Offset(0, 1).Value * 1.07 + micelda.Value
+
+    End If
+    
+Next
+    
+
+End Sub
+
+
+
+
 If edad >= 18 Then
 
     MsgBox "Eres mayor de edad"
