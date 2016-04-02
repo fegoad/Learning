@@ -51,6 +51,7 @@ On Error GoTo cerrarsub
                 
          Else
             
+cerrarsub:
            MsgBox ("El valor introducido no es un número entre el 1 y el 100")
            
          End If
@@ -58,6 +59,6 @@ On Error GoTo cerrarsub
     Wend
     
     
-cerrarsub:
+
     
 End Sub
