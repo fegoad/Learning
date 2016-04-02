@@ -1,0 +1,45 @@
+'Bucles
+
+'Repetir el codigo x veces (bucle). Ahorra en trabajo de programar esas lineas tantas veces como nosotros queramos.
+
+'Bucle indeterminado while-wend. Mientras-
+'While (condición del bucle)
+'Línea 1
+'Línea 2
+'Línea 3
+'Wend
+'
+'Las lineas del bucle se van a reptetir tantas veces como el while del bucle sea verdad. Cuando sea falsa acabará
+'
+'Creamos un ComboBox en la hoja y le ponemos un nombre a ese objeto. (Tiene el nombre predefinido combobox1
+'Cambiar el nombre a un objeto activeX. Click derecho encima y click en propiedades. (Refleja las propiedades del objeto seleccionado).
+'También creo un boton para que al pulsar cargue los datos que yo quiero en el combobox
+
+'Tengo que recorrer desde codigo del rango de celdas y una vez hecho, que se carguen en el combo
+'Objeto Cells: permite hacer desplazamientos en una hoja de calculo por las celdas de la hoja desde codigo. Tiene 2 parámetros:
+'fila y columna: Cells(fila,columna). Cells(3,"D"). Poder recorrer con un bucle while un rango de celdas.
+
+Private Sub CommandButton1_Click() 'Hay que hacer dobleclick sobre el boton en excel para que se abra el código.éste será un event.
+
+'IMPORTANTE: CADA VEZ QUE QUIERA EDITAR EL CÓDIGO DE UN ACTIVEX TENGO QUE TENER ACTIVADO EL MODO DISEÑO EN LA HOJA DE EXCEL
+
+micombo.Clear
+
+Dim fila As Integer
+
+fila = 3
+
+    While Cells(fila, "d").Value <> "" 'Mientras el valor de la celda D3 sea diferente de 0/vacío me vas a hacer lo que le diga a continación
+'Los objetos tienen una propiedad por defecto. La del objeto cells es Value. Esta propiedad por defecto se puede omitir, en el resto no.
+
+    micombo.AddItem Cells(fila, "D").Value 'Me vas a agregar el elemento al combo. El elemento será el que haya en dicha celda.
+'Ahora hay que incrementar paulatinamente el valor de ese bucle para que no me mire la misma celda en la siguiente celda de bucle.
+
+    fila = fila + 1 'Inremente el valor de la variable fila y ahora pasará a valer 4 (3+1)
+
+    Wend
+
+'Resulta que ahora me está añadiendo todo cada vez que le doy al boton sin borrar el contenido previo. Para solucionar esto:
+'Añadimos en la primera parte de este código la siguiente línea: micombo.clear  // Esto borra los contenidos del combobox.
+
+End Sub
