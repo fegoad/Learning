@@ -1,5 +1,7 @@
+Option Explicit
+
 Private Sub Borrar_Click()
-'macro para borrar los resultados de juegos anteriores
+
 Range("c2:g100").Clear
 
 End Sub
@@ -17,31 +19,45 @@ aleatorio = Math.Rnd * 100
 intento = 0
 fila = 2
 
+On Error GoTo cerrarsub
+
     While minum <> aleatorio
     
-        
+            
         minum = InputBox("introduce un número entre el 1 y 100", "Introducción", , 1000, 150)
-        intento = intento + 1
         
-        Cells(fila, "c").Value = minum
-        Cells(fila, "g").Value = intento
-           
-            If aleatorio > minum Then
+        If minum > 1 And minum < 100 Then
+        
+                intento = intento + 1
                 
-                Cells(fila, "e").Value = "El numero aleatorio es mayor"
-                    
-            ElseIf aleatorio < minum Then
-            
-                Cells(fila, "e").Value = "El número aleatorio es menor"
-            
-            Else
-            
-                Cells(fila, "e").Value = "CORRECT"
+                Cells(fila, "c").Value = minum
+                Cells(fila, "g").Value = intento
+                   
+                    If aleatorio > minum Then
                         
-            End If
+                        Cells(fila, "e").Value = "El numero aleatorio es mayor"
+                            
+                    ElseIf aleatorio < minum Then
+                    
+                        Cells(fila, "e").Value = "El número aleatorio es menor"
+                    
+                    Else
+                    
+                        Cells(fila, "e").Value = "CORRECT"
+                                
+                    End If
+                    
+                    fila = fila + 1
+                
+         Else
             
-        fila = fila + 1
+           MsgBox ("El valor introducido no es un número entre el 1 y el 100")
+           
+         End If
                 
     Wend
+    
+    
+cerrarsub:
     
 End Sub
