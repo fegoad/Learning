@@ -1,0 +1,56 @@
+'Bucle Do While Loop
+'Es similar al While Wend. Las principales diferencias: La condición en Do While Loop se puede poner también abajo. Por lo tanto,
+'te aseguras que el codigo del loop se ejecute siempre una vez, y esto en algunas circunstancias es útil.
+
+Private Sub CommandButton1_Click()
+
+Do
+
+    micombo.AddItem ActiveCell.Value
+    
+    ActiveCell.Offset(1, 0).Select
+
+Loop While Not IsEmpty(ActiveCell) 'IsEmpty, quiere decir. Mientras la celda activa no esté vacia...
+
+
+End Sub
+
+Private Sub CommandButton2_Click()
+
+micombo.Clear 'Borrar lo que hay en el desplegable
+
+End Sub
+
+----------------------------------------------------------
+
+'Mediante el pulsar el boton rellenar, el procedimiento va a ir a un archivo .txt, lo va a leer y me va a introducir esos valores
+'en mi combobox.
+
+Private Sub CommandButton1_Click()
+'Para acceder a un archivo se utiliza la instrucción open y despues entre comillas se esribe la ruta del archivo.
+
+Open "C:\Users\Adrián\Desktop\paises.txt" For Input As #1 'Hay que darle un nombre interno para poder hacer referencia a el.
+'For input as #1, el valor numérico es el que va a identificar al archivo.
+
+Dim nlinea As String 'Variable capaz de almacenar las líneas de la linea de texto del archivo
+Dim lineatexto As String 'Variable capaz de almacenar la infomación en ese archivo
+
+nlinea = 0
+
+Do While Not EOF(1) = True 'EOF es un método perteneciente a los objetos de tipo archivo. End Of File (EOF). Vas a hacer lo que programe
+'mientras no llegues al final del archivo 1.
+    
+    Line Input #1, lineatexto 'Lee la línea activa del archivo texto. es la primera por defecto en este tipo de archivos. Almacena
+    'dentro de la variable lineatexto.
+    micombo.AddItem lineatexto '...y lo añade a micombo.
+    
+    nlinea = nlinea + 1
+    
+Loop
+
+    'Cerrar lo que hemos abierto, el archivo .txt
+    Close #1
+    
+End Sub
+
+'Luego está el loop Do Until Loop, haz hasta... y la condición. También se puede poner al final la condiciñon del bucle.
